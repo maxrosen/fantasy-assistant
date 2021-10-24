@@ -107,6 +107,11 @@ class playerProj extends Component {
 			<div>
 				<Container>
 					<Row>
+						<form action='http://localhost:3000' method='get'>
+							<button type='submit'>Home</button>
+						</form>
+					</Row>
+					<Row>
 						<Player player={this.state.p1} />
 						<Player player={this.state.p2} />
 						{p3}

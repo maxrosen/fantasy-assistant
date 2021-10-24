@@ -52,6 +52,7 @@ class PlayerSearch extends Component {
 	render() {
 		return (
 			<Col>
+				Player {this.props.num}
 				<SearchBar
 					searchQuery={this.state.searchQuery}
 					setSearchQuery={this.setSearchQuery}
