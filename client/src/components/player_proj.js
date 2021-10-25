@@ -6,6 +6,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import queryString from 'query-string';
 // import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
 
 class playerProj extends Component {
 	constructor(props) {
@@ -15,39 +16,8 @@ class playerProj extends Component {
 			p2: '',
 			p3: '',
 			p4: '',
-			searchQuery: '',
 		};
-		this.posts = [];
-		this.search = window.location;
-		this.query = new URLSearchParams(this.search).get('name');
-		// [this.searchQuery, this.setSearchQuery] = useState(this.query || '');
-		this.filteredPosts = this.filterPosts(this.posts, this.state.searchQuery);
 	}
-
-	setSearchQuery = (q) => {
-		console.log('setSearchQuery: ' + q);
-		this.setState({ searchQuery: q });
-		// console.log('updated search query: ' + this.state.searchQuery);
-		this.getPlayers('http://localhost:3001/api/player_select', q);
-
-		this.filteredPosts = this.filterPosts(this.posts, q);
-		console.log(`Posts: ` + this.posts);
-	};
-
-	filterPosts = (posts, query) => {
-		// console.log('filterPosts');
-		if (!query) {
-			let n = Math.min(5, posts.length);
-			return posts.slice(0, n);
-		}
-
-		let filtered = posts.filter((post) => {
-			const postName = post.name.toLowerCase();
-			return postName.includes(query);
-		});
-		let n = Math.min(5, filtered.length);
-		return filtered.slice(0, n);
-	};
 
 	callProjAPI(url, id1, id2, id3, id4) {
 		let route = `${url}?id1=${id1}&id2=${id2}`;
@@ -73,16 +43,6 @@ class playerProj extends Component {
 			});
 	}
 
-	getPlayers(url, name) {
-		let route = `${url}?name=${name}`;
-		fetch(route)
-			.then((res) => res.json())
-			.then((res) => {
-				console.log(res);
-				this.posts = res;
-			});
-	}
-
 	componentDidMount() {
 		const query = queryString.parse(window.location.search);
 		this.callProjAPI(
@@ -104,11 +64,13 @@ class playerProj extends Component {
 			p4 = <Player player={this.state.p4} />;
 		}
 		return (
-			<div>
+			<div className='page'>
 				<Container>
 					<Row>
 						<form action='http://localhost:3000' method='get'>
-							<button type='submit'>Home</button>
+							<Button variant='primary' type='submit'>
+								Home
+							</Button>{' '}
 						</form>
 					</Row>
 					<Row>

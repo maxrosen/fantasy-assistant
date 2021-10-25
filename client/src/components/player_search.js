@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import PlayerSelRow from './player_sel_row';
 import SearchBar from './search_bar';
-// import Row from 'react-bootstrap/Row';
+import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 // import SearchRes from './search_results';
+import Form from 'react-bootstrap/Form';
+import ListGroup from 'react-bootstrap/ListGroup';
 
 class PlayerSearch extends Component {
 	constructor(props) {
@@ -18,6 +20,8 @@ class PlayerSearch extends Component {
 		this.query = new URLSearchParams(this.search).get('name');
 		this.setPlayerID = this.setPlayerID.bind(this);
 		this.setSearchQuery = this.setSearchQuery.bind(this);
+		this.playerSelected = false;
+		this.setSelected = this.setSelected.bind(this);
 	}
 
 	async setSearchQuery(q) {
@@ -49,25 +53,36 @@ class PlayerSearch extends Component {
 			});
 	}
 
+	setSelected(selected) {
+		this.playerSelected = selected;
+	}
+
 	render() {
 		return (
 			<Col>
-				Player {this.props.num}
-				<SearchBar
-					searchQuery={this.state.searchQuery}
-					setSearchQuery={this.setSearchQuery}
-				/>
-				<ul style={{ listStyle: 'none' }}>
-					{this.state.posts.map((post) => (
-						<PlayerSelRow
-							id={post.id}
-							name={post.name}
-							position={post.position}
-							team={post.team}
-							setPlayerID={this.setPlayerID}
-						/>
-					))}
-				</ul>
+				<Row>
+					<Form.Label>Player {this.props.num}</Form.Label>
+					<SearchBar
+						searchQuery={this.state.searchQuery}
+						setSearchQuery={this.setSearchQuery}
+						setSelected={this.setSelected}
+					/>
+				</Row>
+				<Row>
+					<ListGroup style={{ listStyle: 'none' }}>
+						{this.state.posts.map((post) => (
+							<PlayerSelRow
+								id={post.id}
+								name={post.name}
+								position={post.position}
+								team={post.team}
+								setPlayerID={this.setPlayerID}
+								activeStatus={this.playerSelected}
+								setSelected={this.setSelected}
+							/>
+						))}
+					</ListGroup>
+				</Row>
 			</Col>
 		);
 	}

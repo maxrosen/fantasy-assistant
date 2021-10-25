@@ -1,5 +1,5 @@
 import React from 'react';
-import Container from 'react-bootstrap/Container';
+// import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
@@ -11,6 +11,11 @@ function player(props) {
 	};
 	const pfpStyle = {
 		width: '250px',
+	};
+	const colStyle = {
+		margin: '1vw',
+		backgroundColor: '#f5f5f5',
+		borderRadius: '25px',
 	};
 
 	let pointsColor;
@@ -47,34 +52,34 @@ function player(props) {
 	}
 
 	return (
-		<Col>
-			<Container>
-				<Row>
+		<Col style={colStyle}>
+			<Row>
+				<span>
 					<img
 						style={pfpStyle}
 						src={player.headshot}
 						alt='player headshot'></img>
-				</Row>
-				<Row>
-					<h3>{player.name}</h3>
-				</Row>
-				{/* <Row>
+				</span>
+			</Row>
+			<Row>
+				<h3>{player.name}</h3>
+			</Row>
+			{/* <Row>
 					<h5>{player.team}</h5>
 				</Row> */}
-				<Row>
-					<span>
-						<img style={logoStyle} src={player.logo} alt='team logo'></img>
-					</span>
-				</Row>
-				<Row>
-					<span>
-						<h5>Projected Points: </h5>
-						<h5 style={{ color: pointsColor, fontWeight: 'bolder' }}>
-							{player.projected_points}
-						</h5>
-					</span>
-				</Row>
-			</Container>
+			<Row>
+				<span>
+					<img style={logoStyle} src={player.logo} alt='team logo'></img>
+				</span>
+			</Row>
+			<Row>
+				<span>
+					<h5>Projected Points: </h5>
+					<h5 style={{ color: pointsColor, fontWeight: 'bolder' }}>
+						{player.projected_points}
+					</h5>
+				</span>
+			</Row>
 		</Col>
 	);
 }
