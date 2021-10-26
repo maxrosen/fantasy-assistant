@@ -46,12 +46,7 @@ class playerSel extends Component {
 		}
 	}
 	deletePlayer(num) {
-		if (num === 4) {
-			this.setState({
-				threeActive: false,
-				id4: '0',
-			});
-		} else if (num === 3) {
+		if (num === 3) {
 			this.setState({
 				threeActive: false,
 				id3: '0',
