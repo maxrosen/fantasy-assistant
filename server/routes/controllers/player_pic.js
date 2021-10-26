@@ -13,7 +13,9 @@ module.exports = function () {
 		let team = query.team;
 
 		if (name && pos && team) {
-			res.send(await pic.getPlayerPic(team, name, pos));
+			let headshot = await pic.getPlayerPic(team, name, pos);
+			console.log(headshot);
+			res.send(headshot);
 		} else {
 			res.send(
 				'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png'

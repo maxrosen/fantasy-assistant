@@ -30,7 +30,7 @@ class PlayerSearch extends Component {
 				'http://localhost:3001/api/player_select',
 				this.state.searchQuery
 			);
-			console.log(`Posts: ` + this.state.posts);
+			// console.log(`Posts: ` + this.state.posts);
 		});
 	}
 
@@ -57,6 +57,16 @@ class PlayerSearch extends Component {
 		this.playerSelected = selected;
 	}
 
+	async getPlayerPic(name, pos, team) {
+		let route = `http://localhost:3001/api/player_pic?name=${name}&pos=${pos}&team=${team}`;
+		fetch(route)
+			.then((res) => res.text())
+			.then((res) => {
+				console.log('Res: ' + res);
+				return res;
+			});
+	}
+
 	render() {
 		return (
 			<Col>
@@ -79,6 +89,7 @@ class PlayerSearch extends Component {
 								setPlayerID={this.setPlayerID}
 								activeStatus={this.playerSelected}
 								setSelected={this.setSelected}
+								url={this.getPlayerPic(post.name, post.position, post.team)}
 							/>
 						))}
 					</ListGroup>

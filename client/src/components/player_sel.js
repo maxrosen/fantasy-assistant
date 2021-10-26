@@ -19,6 +19,7 @@ class playerSel extends Component {
 			id3: '0',
 			id4: '0',
 			threeActive: false,
+			fourActive: false,
 		};
 		this.setID = this.setID.bind(this);
 		this.addPlayer = this.addPlayer.bind(this);
@@ -39,6 +40,9 @@ class playerSel extends Component {
 			this.setState({
 				threeActive: true,
 			});
+		}
+		if (num === 4) {
+			this.setState({ fourActive: true });
 		}
 	}
 	deletePlayer(num) {

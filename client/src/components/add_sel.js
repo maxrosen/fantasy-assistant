@@ -30,7 +30,7 @@ class AddSel extends Component {
 		if (this.state.add) {
 			thing = (
 				<Button
-					variant='primary'
+					variant='success'
 					type='submit'
 					className='submit-button'
 					onClick={this.handleClickAdd}>
@@ -42,7 +42,7 @@ class AddSel extends Component {
 				<div>
 					<PlayerSearch setID={this.props.setID} num={this.props.num} />
 					<Button
-						variant='primary'
+						variant='danger'
 						type='submit'
 						className='submit-button'
 						onClick={this.handleClickDelete}>

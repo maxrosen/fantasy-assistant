@@ -29,6 +29,10 @@ async function getPlayerPic(team_abbr, player_name, position) {
 	} else if (team_abbr && player_name && position) {
 		let roster = await getTeamRoster(team_abbr, position);
 
+		if (roster === undefined) {
+			return 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png';
+		}
+
 		let player = roster.filter((obj) => {
 			return obj.displayName === player_name;
 		});
