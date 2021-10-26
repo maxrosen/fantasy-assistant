@@ -14,7 +14,7 @@ module.exports = function () {
 
 		if (name && pos && team) {
 			let headshot = await pic.getPlayerPic(team, name, pos);
-			console.log(headshot);
+			// console.log(headshot);
 			res.send(headshot);
 		} else {
 			res.send(
