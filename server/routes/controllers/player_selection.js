@@ -41,7 +41,8 @@ module.exports = function () {
 						obj.position === 'WR' ||
 						obj.position === 'RB' ||
 						obj.position === 'TE' ||
-						obj.position === 'DEF')
+						obj.position === 'DEF' ||
+						obj.position === 'K')
 				);
 			} else {
 				return (
@@ -50,7 +51,8 @@ module.exports = function () {
 						obj.position === 'WR' ||
 						obj.position === 'RB' ||
 						obj.position === 'TE' ||
-						obj.position === 'DEF')
+						obj.position === 'DEF' ||
+						obj.position === 'K')
 				);
 			}
 		});
